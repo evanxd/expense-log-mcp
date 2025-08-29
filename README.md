@@ -30,7 +30,12 @@ A MCP server that provides tools for logging expenses.
     - Create a `.env` file in the root of the project.
     - Add your PostgreSQL connection string to the `.env` file:
       ```
-      DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+      DB_USER="postgres"
+      DB_HOST="localhost"
+      DB_PORT="5432"
+      DB_DATABASE="postgres"
+      DB_PASSWORD="YOUR_DB_PASSWORD"
+      DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}?schema=public"
       ```
     - Apply the database schema:
       ```bash
