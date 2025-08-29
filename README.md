@@ -1,0 +1,111 @@
+# Expense Log MCP
+
+A MCP server that provides tools for logging expenses.
+
+## ✨ Features
+
+- Log a new expense to a ledger.
+- Retrieve a list of all available expense categories.
+
+## 🛠️ Tools
+
+The server exposes the following tools:
+
+### `addExpense`
+
+Adds a new expense record.
+
+**Parameters:**
+
+| Name          | Type   | Description                               |
+|---------------|--------|-------------------------------------------|
+| `ledgerId`    | string | The ID of the ledger to add the expense to. |
+| `categoryId`  | number | The ID of the expense category.           |
+| `description` | string | A description of the expense.             |
+| `amount`      | number | The amount of the expense.                |
+| `payer`       | string | The name of the person who paid.          |
+
+**Returns:**
+
+A string confirming the expense has been added, e.g., `Expense added with id: 123`.
+
+### `getExpenseCategories`
+
+Retrieves the list of all expense categories.
+
+**Parameters:**
+
+None.
+
+**Returns:**
+
+A JSON string representing an array of category objects, e.g.:
+```json
+[
+  {
+    "expenseCategoryId": 1,
+    "expenseCategoryName": "Groceries"
+  },
+  {
+    "expenseCategoryId": 2,
+    "expenseCategoryName": "Utilities"
+  }
+]
+```
+
+## 🗄️ Database Schema
+
+This project uses Prisma to manage the database schema. The schema is defined in `prisma/schema.prisma` and includes the following models:
+
+- `Ledger`: Represents a collection of expenses.
+- `ExpenseCategory`: Represents a category for an expense.
+- `Expense`: Represents a single expense record.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/)
+- A PostgreSQL database
+
+### Installation & Setup
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd expense-log-mcp
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Set up the database:**
+    - Create a `.env` file in the root of the project.
+    - Add your PostgreSQL connection string to the `.env` file:
+      ```
+      DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+      ```
+    - Apply the database schema:
+      ```bash
+      npx prisma db push
+      ```
+
+4.  **Build the project:**
+    ```bash
+    npm run build
+    ```
+
+5.  **Start the server:**
+    ```bash
+    npm run start
+    ```
+
+## 🙌 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## 📄 License
+
+This project is licensed under the MIT License.

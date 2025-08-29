@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Ledger {
+  id       String    @id @map("id")
+  name     String
+  expenses Expense[]
+
+  @@map("ledgers")
+}
+
+model ExpenseCategory {
+  id       Int    @id @map("id") @default(autoincrement())
+  name     String
+  expenses Expense[]
+
+  @@map("expense_categories")
+}
+
+model Expense {
+  id          Int             @id @default(autoincrement())
+  ledgerId    String          @map("ledger_id")
+  categoryId  Int             @map("category_id")
+  description String
+  amount      Float
+  payer       String
+
+  ledger      Ledger          @relation(fields: [ledgerId], references: [id])
+  category    ExpenseCategory @relation(fields: [categoryId], references: [id])
+
+  @@map("expenses")
+}

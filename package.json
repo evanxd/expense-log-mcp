@@ -1,0 +1,28 @@
+{
+  "name": "expense-log-mcp",
+  "version": "1.0.0",
+  "description": "A MCP server that provides tools for logging expenses.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["mcp", "mcp-server", "fastmcp", "prisma", "typescript", "nodejs"],
+  "author": "Evan Tseng-Jen Tseng <evan@tseng.io>",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@prisma/client": "^6.15.0",
+    "dotenv": "^17.2.1",
+    "fastmcp": "^3.15.2",
+    "pg": "^8.16.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/pg": "^8.15.5",
+    "prisma": "^6.15.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
