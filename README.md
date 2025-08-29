@@ -7,6 +7,54 @@ A MCP server that provides tools for logging expenses.
 - Log a new expense to a ledger.
 - Retrieve a list of all available expense categories.
 
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/)
+- A [PostgreSQL](https://www.postgresql.org/) database
+
+### Installation & Setup
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/evanxd/expense-log-mcp.git
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Set up the database:**
+    - Create a `.env` file in the root of the project.
+    - Add your PostgreSQL connection string to the `.env` file:
+      ```
+      DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+      ```
+    - Apply the database schema:
+      ```bash
+      npx prisma db push
+      ```
+
+4.  **Build the project:**
+    ```bash
+    npm run build
+    ```
+
+5.  **Set up the MCP server:**
+    - Add the following configuration to your MCP host (e.g., Gemini CLI) settings:
+    ```json
+    "mcpServers": {
+      "expense-log-mcp": {
+        "command": "node",
+        "args": [
+          "/path/to/expense-log-mcp/dist/index.js"
+        ]
+      }
+    }
+    ```
+
 ## 🛠️ Tools
 
 The server exposes the following tools:
@@ -60,46 +108,6 @@ This project uses Prisma to manage the database schema. The schema is defined in
 - `Ledger`: Represents a collection of expenses.
 - `ExpenseCategory`: Represents a category for an expense.
 - `Expense`: Represents a single expense record.
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/)
-- A [PostgreSQL](https://www.postgresql.org/) database
-
-### Installation & Setup
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/evanxd/expense-log-mcp.git
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Set up the database:**
-    - Create a `.env` file in the root of the project.
-    - Add your PostgreSQL connection string to the `.env` file:
-      ```
-      DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
-      ```
-    - Apply the database schema:
-      ```bash
-      npx prisma db push
-      ```
-
-4.  **Build the project:**
-    ```bash
-    npm run build
-    ```
-
-5.  **Start the server:**
-    ```bash
-    npm run start
-    ```
 
 ## 🙌 Contributing
 
