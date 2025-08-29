@@ -66,7 +66,7 @@ This project uses Prisma to manage the database schema. The schema is defined in
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/)
-- A PostgreSQL database
+- A [PostgreSQL](https://www.postgresql.org/) database
 
 ### Installation & Setup
 
