@@ -116,7 +116,7 @@ This project uses Prisma to manage the database schema. The schema is defined in
 
 ## 🙌 Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Contributions are welcome! Please feel free to submit a pull request.
 
 ## 📄 License
 
