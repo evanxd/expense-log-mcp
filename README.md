@@ -72,8 +72,7 @@ This project uses Prisma to manage the database schema. The schema is defined in
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
-    cd expense-log-mcp
+    git clone https://github.com/evanxd/expense-log-mcp.git
     ```
 
 2.  **Install dependencies:**
