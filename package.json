@@ -1,6 +1,6 @@
 {
   "name": "expense-log-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A MCP server that provides tools for logging expenses.",
   "main": "dist/index.js",
   "scripts": {
