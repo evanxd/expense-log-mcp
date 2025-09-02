@@ -2,16 +2,16 @@
   "name": "expense-log-mcp",
   "version": "1.0.7",
   "description": "A MCP server that provides tools for logging expenses.",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/evanxd/expense-log-mcp.git"
-	},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evanxd/expense-log-mcp.git"
+  },
   "main": "dist/index.js",
   "bin": {
     "expense-log-mcp": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\" && prisma generate",
+    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
     "postinstall": "npx prisma generate",
     "prepare": "npm run build"
   },
@@ -33,6 +33,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@tsconfig/node24": "^24.0.1",
     "@types/node": "^24.3.0",
     "@types/pg": "^8.15.5",
     "prisma": "^6.15.0",
