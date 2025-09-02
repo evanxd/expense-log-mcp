@@ -2,10 +2,17 @@
   "name": "expense-log-mcp",
   "version": "1.0.1",
   "description": "A MCP server that provides tools for logging expenses.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/evanxd/expense-log-mcp.git"
+	},
   "main": "dist/index.js",
+  "bin": {
+    "mcp-server": "./dist/index.js"
+  },
   "scripts": {
-    "build": "tsc",
-    "start": "npm run build && node dist/index.js"
+    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
+    "start": "node dist/index.js"
   },
   "keywords": [
     "mcp",

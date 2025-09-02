@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { FastMCP } from "fastmcp";
 import { getExpenseCategories } from "./tools/get-expense-categories.js";
 import { addExpense } from "./tools/add-expense.js";
