@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\" && prisma generate",
-    "postinstall": "prisma generate",
+    "postinstall": "npx prisma generate",
     "prepare": "npm run build"
   },
   "keywords": [
