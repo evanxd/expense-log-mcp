@@ -11,7 +11,7 @@
     "mcp-server": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
+    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\" && prisma generate",
     "start": "node dist/index.js"
   },
   "keywords": [
