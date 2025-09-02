@@ -7,13 +7,19 @@
     "build": "tsc",
     "start": "node dist/index.js"
   },
-  "keywords": ["mcp", "mcp-server", "fastmcp", "prisma", "typescript", "nodejs"],
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "fastmcp",
+    "prisma",
+    "typescript",
+    "nodejs"
+  ],
   "author": "Evan Tseng-Jen Tseng <evan@tseng.io>",
   "license": "MIT",
   "type": "module",
   "dependencies": {
     "@prisma/client": "^6.15.0",
-    "dotenv": "^17.2.1",
     "fastmcp": "^3.15.2",
     "pg": "^8.16.3",
     "zod": "^3.25.76"

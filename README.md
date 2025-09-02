@@ -55,7 +55,10 @@ A MCP server that provides tools for logging expenses.
         "command": "node",
         "args": [
           "/path/to/expense-log-mcp/dist/index.js"
-        ]
+        ],
+        "env": {
+          "DATABASE_URL": "postgresql://postgres:YOUR_DB_PASSWORD@localhost:5432/postgres?schema=public"
+        }
       }
     }
     ```
