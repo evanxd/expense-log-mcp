@@ -9,8 +9,8 @@ const server = new FastMCP({
   version: "1.0.0",
 });
 
-server.addTool(getExpenseCategories);
 server.addTool(addExpense);
 server.addTool(deleteExpense);
+server.addTool(getExpenseCategories);
 
 server.start({ transportType: "stdio" });
