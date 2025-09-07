@@ -5,6 +5,7 @@ A MCP server that provides tools for logging expenses.
 ## ✨ Features
 
 - Log a new expense to a ledger.
+- Delete an expense record.
 - Retrieve a list of all available expense categories.
 
 ## 🚀 Getting Started
@@ -41,6 +42,10 @@ A MCP server that provides tools for logging expenses.
       ```bash
       npx prisma db push
       ```
+    - Seed the database with initial categories:
+      ```bash
+      npm run db:seed
+      ```
 
 4.  **Build the project:**
     ```bash
@@ -73,17 +78,33 @@ Adds a new expense record.
 
 **Parameters:**
 
-| Name          | Type   | Description                               |
-|---------------|--------|-------------------------------------------|
-| `ledgerId`    | string | The ID of the ledger to add the expense to. |
-| `categoryId`  | number | The ID of the expense category.           |
-| `description` | string | A description of the expense.             |
-| `amount`      | number | The amount of the expense.                |
-| `payer`       | string | The name of the person who paid.          |
+| Name          | Type   | Description                                        |
+|---------------|--------|----------------------------------------------------|
+| `ledgerId`    | string | The ID of the ledger to add the expense to.        |
+| `categoryId`  | string | The ID of the expense category.                    |
+| `messageId`   | string | A unique ID for the message to prevent duplicates. |
+| `description` | string | A description of the expense.                      |
+| `amount`      | number | The amount of the expense.                         |
+| `payer`       | string | The name of the person who paid.                   |
 
 **Returns:**
 
 A string confirming the expense has been added, e.g., `Expense added with id: 123`.
+
+### `deleteExpense`
+
+Deletes an expense record.
+
+**Parameters:**
+
+| Name        | Type   | Description                                         |
+|-------------|--------|-----------------------------------------------------|
+| `ledgerId`  | string | The ID of the ledger the expense belongs to.        |
+| `messageId` | string | The unique message ID of the expense to be deleted. |
+
+**Returns:**
+
+A string confirming the expense has been deleted, e.g., `Expense deleted successfully.`.
 
 ### `getExpenseCategories`
 
@@ -99,11 +120,11 @@ A JSON string representing an array of category objects, e.g.:
 ```json
 [
   {
-    "expenseCategoryId": 1,
+    "expenseCategoryId": "clx...1",
     "expenseCategoryName": "Groceries"
   },
   {
-    "expenseCategoryId": 2,
+    "expenseCategoryId": "clx...2",
     "expenseCategoryName": "Utilities"
   }
 ]
@@ -115,7 +136,9 @@ This project uses Prisma to manage the database schema. The schema is defined in
 
 - `Ledger`: Represents a collection of expenses.
 - `ExpenseCategory`: Represents a category for an expense.
-- `Expense`: Represents a single expense record.
+- `Expense`: Represents a single expense record. A unique constraint is added on `ledgerId` and `messageId` to prevent duplicate expenses.
+
+All models include `createdAt` and `updatedAt` timestamps. IDs are generated using `cuid()`.
 
 ## 🙌 Contributing
 
