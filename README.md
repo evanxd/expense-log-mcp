@@ -139,18 +139,23 @@ None.
 
 **Returns:**
 
-A JSON string representing an array of category objects, e.g.:
+A JSON string containing the list of expense categories, e.g.:
 ```json
-[
-  {
-    "expenseCategoryId": "clx...1",
-    "expenseCategoryName": "Groceries"
-  },
-  {
-    "expenseCategoryId": "clx...2",
-    "expenseCategoryName": "Utilities"
-  }
-]
+{
+  "success": true,
+  "code": "OK",
+  "message": "Expense categories retrieved successfully.",
+  "data": [
+    {
+      "expenseCategoryId": "clx...1",
+      "expenseCategoryName": "Transportation"
+    },
+    {
+      "expenseCategoryId": "clx...2",
+      "expenseCategoryName": "Utilities"
+    }
+  ]
+}
 ```
 
 ## 🗄️ Database Schema
