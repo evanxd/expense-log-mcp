@@ -4,7 +4,8 @@ import { successResponse, errorResponse, getErrorMessage } from "./utils.js";
 
 const addExpenseParameters = z.object({
   ledgerId: z.string(),
-  categoryId: z.number(),
+  categoryId: z.string(),
+  messageId: z.string(),
   description: z.string(),
   amount: z.number(),
   payer: z.string(),
@@ -16,7 +17,14 @@ export const addExpense = {
   name: "addExpense",
   description: "Add a new expense.",
   parameters: addExpenseParameters,
-  execute: async ({ ledgerId, categoryId, description, amount, payer }: AddExpenseParameters): Promise<ReturnType<typeof successResponse> | ReturnType<typeof errorResponse>> => {
+  execute: async ({
+    ledgerId,
+    categoryId,
+    messageId,
+    description,
+    amount,
+    payer
+  }: AddExpenseParameters): Promise<ReturnType<typeof successResponse> | ReturnType<typeof errorResponse>> => {
     try {
       await prisma.ledger.upsert({
         where: { id: ledgerId },
@@ -27,6 +35,7 @@ export const addExpense = {
         data: {
           ledgerId,
           categoryId,
+          messageId,
           description,
           amount,
           payer,

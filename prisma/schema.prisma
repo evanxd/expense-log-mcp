@@ -8,31 +8,39 @@ datasource db {
 }
 
 model Ledger {
-  id       String    @id @map("id")
-  name     String
-  expenses Expense[]
+  id        String    @id
+  name      String
+  expenses  Expense[]
+  createdAt DateTime  @map("created_at") @default(now())
+  updatedAt DateTime  @map("updated_at") @updatedAt
 
   @@map("ledgers")
 }
 
 model ExpenseCategory {
-  id       Int    @id @map("id") @default(autoincrement())
-  name     String
-  expenses Expense[]
+  id        String    @id @default(cuid())
+  name      String
+  expenses  Expense[]
+  createdAt DateTime  @map("created_at") @default(now())
+  updatedAt DateTime  @map("updated_at") @updatedAt
 
   @@map("expense_categories")
 }
 
 model Expense {
-  id          Int             @id @default(autoincrement())
+  id          String          @id @default(cuid())
   ledgerId    String          @map("ledger_id")
-  categoryId  Int             @map("category_id")
+  categoryId  String          @map("category_id")
+  messageId   String
   description String
   amount      Float
   payer       String
+  createdAt   DateTime        @map("created_at") @default(now())
+  updatedAt   DateTime        @map("updated_at") @updatedAt
 
   ledger      Ledger          @relation(fields: [ledgerId], references: [id])
   category    ExpenseCategory @relation(fields: [categoryId], references: [id])
 
+  @@unique([ledgerId, messageId])
   @@map("expenses")
 }
