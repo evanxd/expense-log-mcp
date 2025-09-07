@@ -1,6 +1,6 @@
 {
   "name": "expense-log-mcp",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A MCP server that provides tools for logging expenses.",
   "repository": {
     "type": "git",

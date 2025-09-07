@@ -7,7 +7,7 @@ import { getExpenseCategories } from "./tools/get-expense-categories.js";
 
 const server = new FastMCP({
   name: "Expense Logging MCP Server",
-  version: "1.0.0",
+  version: "1.0.10"
 });
 
 server.addTool(addExpense);
