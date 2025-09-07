@@ -7,6 +7,7 @@ A MCP server that provides tools for logging expenses.
 - Log a new expense to a ledger.
 - Delete an expense record.
 - Retrieve a list of all available expense categories.
+- Retrieve and group expenses by payer and category.
 
 ## 🚀 Getting Started
 
@@ -155,6 +156,47 @@ A JSON string containing the list of expense categories, e.g.:
       "expenseCategoryName": "Utilities"
     }
   ]
+}
+```
+
+### `getGroupedExpenses`
+
+Retrieves and groups expenses by payer and then by category name, returning the total amount for each category,
+with optional filters for category IDs, payer, and a date range.
+
+**Parameters:**
+
+| Name          | Type     | Description                                                        |
+|---------------|----------|--------------------------------------------------------------------|
+| `ledgerId`    | string   | The ID of the ledger to retrieve expenses from.                    |
+| `categoryIds` | string[] | Optional. An array of category IDs to filter by.                   |
+| `payer`       | string   | Optional. The name of the payer to filter by.                      |
+| `startDate`   | string   | Optional. The start date for filtering expenses (ISO 8601 format). |
+| `endDate`     | string   | Optional. The end date for filtering expenses (ISO 8601 format).   |
+
+**Returns:**
+
+A JSON string containing the grouped expenses, e.g.:
+```json
+{
+  "success": true,
+  "code": "OK",
+  "message": "Grouped expenses retrieved successfully.",
+  "data": {
+    "Payer1": {
+      "expenseCategories": {
+        "Entertainment": 100,
+        "Transportation": 50
+      },
+      "totalAmount": 150
+    },
+    "Payer2": {
+      "expenseCategories": {
+        "Dining/Snacks": 75
+      },
+      "totalAmount": 75
+    }
+  }
 }
 ```
 
