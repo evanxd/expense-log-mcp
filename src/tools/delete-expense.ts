@@ -20,8 +20,9 @@ export const deleteExpense = {
         where: { ledgerId_messageId: { ledgerId, messageId } },
       });
 
-      const { description, amount, createdAt } = expense;
+      const { id, description, amount, createdAt } = expense;
       return successResponse("Expense deleted successfully.", {
+        id,
         description,
         amount,
         createdAt: createdAt.toDateString(),
