@@ -89,7 +89,17 @@ Adds a new expense record.
 
 **Returns:**
 
-A string confirming the expense has been added, e.g., `Expense added with id: 123`.
+A JSON string confirming the expense has been added, e.g.:
+```json
+{
+  "success": true,
+  "code": "OK",
+  "message": "Expense added successfully.",
+  "data": {
+    "expenseId": "clx...456"
+  }
+}
+```
 
 ### `deleteExpense`
 
@@ -104,7 +114,20 @@ Deletes an expense record.
 
 **Returns:**
 
-A string confirming the expense has been deleted, e.g., `Expense deleted successfully.`.
+A JSON string confirming the expense has been deleted, and including details of the deleted expense, e.g.:
+```json
+{
+  "success": true,
+  "code": "OK",
+  "message": "Expense deleted successfully.",
+  "data": {
+    "id": "clx...123",
+    "description": "Lunch",
+    "amount": 15.75,
+    "createdAt": "Sun Sep 07 2025"
+  }
+}
+```
 
 ### `getExpenseCategories`
 
