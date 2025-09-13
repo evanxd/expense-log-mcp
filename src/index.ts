@@ -12,6 +12,9 @@ dotenv.config();
 const server = new FastMCP({
   name: "Expense Logging MCP Server",
   version: "1.0.10",
+  health: {
+    message: "OK",
+  },
   authenticate: async (req) => {
     const auth = req.headers["authorization"];
     if (auth !== `Bearer ${process.env.MCP_SECRET_KEY}`) {
@@ -35,6 +38,7 @@ server.addTool(getGroupedExpenses);
 server.start({
   transportType: "httpStream",
   httpStream: {
+    host: "0.0.0.0",
     port: Number(process.env.PORT) || 8080,
   },
 });
