@@ -39,6 +39,11 @@ An SSE-based MCP server providing tools for logging expenses.
       DB_PASSWORD="YOUR_DB_PASSWORD"
       DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}?schema=public"
       ```
+    - **Add server configuration to your `.env` file:**
+      ```
+      MCP_SECRET_KEY="YOUR_SECRET_KEY" # A strong, unique key for authenticating with the MCP server
+      PORT="8080" # The port the MCP server will listen on (default is 8080)
+      ```
     - Apply the database schema:
       ```bash
       npx prisma db push
@@ -52,19 +57,21 @@ An SSE-based MCP server providing tools for logging expenses.
     ```bash
     npm run build && npm start
     ```
-    This command compiles the TypeScript code and then starts the server, which will listen for incoming requests.
+    This command compiles the TypeScript code and then starts the server, which will listen for incoming requests on the specified `PORT` (defaulting to 8080).
 
 5.  **Configure your MCP host (e.g., Gemini CLI):**
     - Add the following configuration to your Gemini CLI settings (typically found in `~/.gemini-cli/config.json` or similar, depending on your OS):
     ```json
     "mcpServers": {
       "expense-log-mcp": {
-        "url": "http://localhost:8080/sse"
+        "url": "http://localhost:8080/sse",
+        "headers": {
+          "Authorization": "Bearer YOUR_SECRET_KEY"
+        }
       }
     }
     ```
-    This tells the Gemini CLI how to connect to your locally running Expense Log MCP server.
-    ```
+    **Important:** Replace `YOUR_SECRET_KEY` with the actual `MCP_SECRET_KEY` you set in your `.env` file. This tells the Gemini CLI how to connect to and authenticate with your locally running Expense Log MCP server.
 
 ## 🛠️ Tools
 

@@ -1,6 +1,6 @@
 import { z } from "zod";
 import prisma from "../db.js";
-import { successResponse, errorResponse, getErrorMessage } from "./utils.js";
+import { successResponse, errorResponse, getErrorMessage } from "../utils.js";
 
 const addExpenseParameters = z.object({
   ledgerId: z.string(),

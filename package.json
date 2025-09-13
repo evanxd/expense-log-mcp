@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "db:seed": "npx prisma db seed",
-    "start": "node dist/index.js"
+    "start": "node --require dotenv/config dist/index.js"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
@@ -28,6 +28,7 @@
   "type": "module",
   "dependencies": {
     "@prisma/client": "^6.15.0",
+    "dotenv": "^17.2.2",
     "fastmcp": "^3.17.0",
     "pg": "^8.16.3",
     "zod": "^3.25.76"

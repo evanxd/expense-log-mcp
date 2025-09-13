@@ -1,5 +1,5 @@
 import prisma from "../db.js";
-import { successResponse, errorResponse, getErrorMessage } from "./utils.js"
+import { successResponse, errorResponse, getErrorMessage } from "../utils.js"
 
 export const getExpenseCategories = {
   name: "getExpenseCategories",

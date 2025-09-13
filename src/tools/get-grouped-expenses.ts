@@ -1,6 +1,6 @@
 import { z } from "zod";
 import prisma from "../db.js";
-import { successResponse, errorResponse, getErrorMessage } from "./utils.js";
+import { successResponse, errorResponse, getErrorMessage } from "../utils.js";
 import { Prisma } from "@prisma/client";
 
 const getGroupedExpensesParameters = z.object({
