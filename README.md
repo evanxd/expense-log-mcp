@@ -1,6 +1,6 @@
 # Expense Log MCP
 
-A MCP server that provides tools for logging expenses.
+An SSE-based MCP server providing tools for logging expenses.
 
 ## ✨ Features
 
@@ -48,25 +48,22 @@ A MCP server that provides tools for logging expenses.
       npm run db:seed
       ```
 
-4.  **Build the project:**
+4.  **Build and start the server:**
     ```bash
-    npm run build
+    npm run build && npm start
     ```
+    This command compiles the TypeScript code and then starts the server, which will listen for incoming requests.
 
-5.  **Set up the MCP server:**
-    - Add the following configuration to your MCP host (e.g., Gemini CLI) settings:
+5.  **Configure your MCP host (e.g., Gemini CLI):**
+    - Add the following configuration to your Gemini CLI settings (typically found in `~/.gemini-cli/config.json` or similar, depending on your OS):
     ```json
     "mcpServers": {
       "expense-log-mcp": {
-        "command": "node",
-        "args": [
-          "/path/to/expense-log-mcp/dist/index.js"
-        ],
-        "env": {
-          "DATABASE_URL": "postgresql://postgres:YOUR_DB_PASSWORD@localhost:5432/postgres?schema=public"
-        }
+        "url": "http://localhost:8080/sse"
       }
     }
+    ```
+    This tells the Gemini CLI how to connect to your locally running Expense Log MCP server.
     ```
 
 ## 🛠️ Tools

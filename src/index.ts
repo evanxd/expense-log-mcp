@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { FastMCP } from "fastmcp";
 import { addExpense } from "./tools/add-expense.js";
 import { deleteExpense } from "./tools/delete-expense.js";
@@ -15,4 +14,4 @@ server.addTool(deleteExpense);
 server.addTool(getExpenseCategories);
 server.addTool(getGroupedExpenses);
 
-server.start({ transportType: "stdio" });
+server.start({ transportType: "httpStream" });
