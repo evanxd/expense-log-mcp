@@ -5,13 +5,13 @@ const prisma = new PrismaClient();
 async function main() {
   console.log("Start seeding ...");
   const categories = [
-    { name: 'Dining/Snacks' },
-    { name: 'Food' },
-    { name: 'Necessities' },
-    { name: 'Transportation' },
-    { name: 'Utilities' },
-    { name: 'Entertainment' },
-    { name: 'Others' },
+    { name: "Meals/Snacks" },
+    { name: "Groceries" },
+    { name: "Supplies" },
+    { name: "Transportation" },
+    { name: "Utilities" },
+    { name: "Entertainment" },
+    { name: "Others" },
   ];
 
   for (const category of categories) {
