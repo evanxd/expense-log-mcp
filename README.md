@@ -8,6 +8,7 @@ An SSE-based MCP server providing tools for logging expenses.
 - Delete an expense record.
 - Retrieve a list of all available expense categories.
 - Retrieve and group expenses by payer and category.
+- Retrieve an expense record.
 
 ## 🚀 Getting Started
 
@@ -130,6 +131,36 @@ A JSON string confirming the expense has been deleted, and including details of 
     "description": "Lunch",
     "amount": 15.75,
     "createdAt": "Sun Sep 07 2025"
+  }
+}
+```
+
+### `getExpense`
+
+Retrieves the details of a single expense.
+
+**Parameters:**
+
+| Name        | Type   | Description                                         |
+|-------------|--------|-----------------------------------------------------|
+| `ledgerId`  | string | The ID of the ledger the expense belongs to.        |
+| `messageId` | string | The unique message ID of the expense to be deleted. |
+
+**Returns:**
+
+A JSON string confirming the expense has been retrieved, and including details of the expense, e.g.:
+```json
+{
+  "success": true,
+  "code": "OK",
+  "message": "Expense retrieved successfully.",
+  "data": {
+    "id": "clx...123",
+    "description": "Lunch",
+    "amount": 110,
+    "payer": "payer1",
+    "createdAt": "2025-09-07T00:00:00.000Z",
+    "updatedAt": "2025-09-07T00:00:00.000Z"
   }
 }
 ```

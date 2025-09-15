@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { generateId } from "./utils.js" 
 import { addExpense } from "./tools/add-expense.js";
 import { deleteExpense } from "./tools/delete-expense.js";
+import { getExpense } from "./tools/get-expense.js";
 import { getGroupedExpenses } from "./tools/get-grouped-expenses.js";
 import { getExpenseCategories } from "./tools/get-expense-categories.js";
 
@@ -32,6 +33,7 @@ const server = new FastMCP({
 
 server.addTool(addExpense);
 server.addTool(deleteExpense);
+server.addTool(getExpense);
 server.addTool(getExpenseCategories);
 server.addTool(getGroupedExpenses);
 
