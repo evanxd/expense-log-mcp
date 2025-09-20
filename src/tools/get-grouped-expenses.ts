@@ -23,7 +23,7 @@ export const getGroupedExpenses = {
   ): Promise<ReturnType<typeof successResponse> | ReturnType<typeof errorResponse>> => {
     try {
       const where = buildWhereFilter(ledgerId, categoryIds, payer, startDate, endDate);
-      const expenses = await prisma.expense.findMany({ where });
+      const expenses = await prisma.expense.findMany({ where, orderBy: { payer: "asc" } });
 
       const categories = await prisma.expenseCategory.findMany();
       const categoryMap = new Map<string, string>();
