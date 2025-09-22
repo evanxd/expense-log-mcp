@@ -14,11 +14,18 @@ export const getExpense = {
   name: "getExpense",
   description: "Get the details of a specific expense.",
   parameters: getExpenseParameters,
-  execute: async ({ ledgerId, messageId }: GetExpenseParameters):
-    Promise<ReturnType<typeof successResponse> | ReturnType<typeof errorResponse>> => {
+  execute: async ({
+    ledgerId,
+    messageId,
+  }: GetExpenseParameters): Promise<
+    ReturnType<typeof successResponse> | ReturnType<typeof errorResponse>
+  > => {
     try {
       if (!ledgerId || !messageId) {
-        return errorResponse("INVALID_INPUT", "To get an expense, both `ledgerId` and `messageId` must be provided.");
+        return errorResponse(
+          "INVALID_INPUT",
+          "To get an expense, both `ledgerId` and `messageId` must be provided.",
+        );
       }
 
       const expense = await prisma.expense.findUnique({
@@ -36,5 +43,5 @@ export const getExpense = {
     } catch (e: unknown) {
       return errorResponse("DATABSAE_ERROR", getErrorMessage(e));
     }
-  }
+  },
 };

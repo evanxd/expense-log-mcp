@@ -30,7 +30,11 @@ export function successResponse(message: string, data: Json = null) {
  * @param data - Optional data to include in the response.
  * @returns A JSON string representing the error response.
  */
-export function errorResponse(code: string, message: string, data: Json = null) {
+export function errorResponse(
+  code: string,
+  message: string,
+  data: Json = null,
+) {
   return JSON.stringify({
     success: false,
     code,

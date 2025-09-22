@@ -14,8 +14,12 @@ export const deleteExpense = {
   name: "deleteExpense",
   description: "Delete a certain expense.",
   parameters: deleteExpenseParameters,
-  execute: async ({ ledgerId, messageId }: DeleteExpenseParameters):
-    Promise<ReturnType<typeof successResponse> | ReturnType<typeof errorResponse>> => {
+  execute: async ({
+    ledgerId,
+    messageId,
+  }: DeleteExpenseParameters): Promise<
+    ReturnType<typeof successResponse> | ReturnType<typeof errorResponse>
+  > => {
     try {
       const expense = await prisma.expense.delete({
         where: { ledgerId_messageId: { ledgerId, messageId } },

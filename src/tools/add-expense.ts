@@ -1,4 +1,5 @@
 import { z } from "zod";
+
 import prisma from "../db.js";
 import { successResponse, errorResponse, getErrorMessage } from "../utils.js";
 
@@ -23,8 +24,10 @@ export const addExpense = {
     messageId,
     description,
     amount,
-    payer
-  }: AddExpenseParameters): Promise<ReturnType<typeof successResponse> | ReturnType<typeof errorResponse>> => {
+    payer,
+  }: AddExpenseParameters): Promise<
+    ReturnType<typeof successResponse> | ReturnType<typeof errorResponse>
+  > => {
     try {
       await prisma.ledger.upsert({
         where: { id: ledgerId },
@@ -41,7 +44,9 @@ export const addExpense = {
           payer,
         },
       });
-      return successResponse("Expense added successfully.", { expenseId: expense.id });
+      return successResponse("Expense added successfully.", {
+        expenseId: expense.id,
+      });
     } catch (e: unknown) {
       return errorResponse("DATABASE_ERROR", getErrorMessage(e));
     }

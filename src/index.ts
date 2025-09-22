@@ -1,7 +1,7 @@
 import { FastMCP } from "fastmcp";
 import dotenv from "dotenv";
 
-import { generateId } from "./utils.js" 
+import { generateId } from "./utils.js";
 import { addExpense } from "./tools/add-expense.js";
 import { deleteExpense } from "./tools/delete-expense.js";
 import { getExpense } from "./tools/get-expense.js";
@@ -24,7 +24,7 @@ const server = new FastMCP({
     return {
       id: generateId(),
       authenticatedAt: new Date().toISOString(),
-    }
+    };
   },
 });
 
